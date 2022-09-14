@@ -18,5 +18,16 @@
     <ClCompile Include="TWL.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
+    <ClCompile Include="TextureHolder.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TextureHolder.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
