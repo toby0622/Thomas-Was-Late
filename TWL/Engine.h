@@ -7,29 +7,28 @@
 #include "SoundManager.h"
 #include "HUD.h"
 #include "ParticleSystem.h"
-
 using namespace sf;
 
 class Engine
 {
 private:
-	// The texture holder
+	// Texture Holder
 	TextureHolder th;
 
-	// create a particle system
+	// Particle System Create
 	ParticleSystem m_PS;
 
-	// Thomas and his friend, Bob
+	// Player (Thomas & Bob)
 	Thomas m_Thomas;
 	Bob m_Bob;
 
-	// A class to manage all the levels
+	// LevelManager
 	LevelManager m_LM;
 
-	// Create a SoundManager
+	// SoundManager
 	SoundManager m_SM;
 
-	// The Hud
+	// HUD
 	Hud m_Hud;
 	int m_FramesSinceLastHUDUpdate = 0;
 	int m_TargetFramesPerHUDUpdate = 500;
@@ -37,79 +36,71 @@ private:
 	const int TILE_SIZE = 50;
 	const int VERTS_IN_QUAD = 4;
 
-	// The force pushing the characters down
+	// Gravity Force
 	const int GRAVITY = 300;
 
-	// A regular RenderWindow
 	RenderWindow m_Window;
 
-	// The main Views
 	View m_MainView;
 	View m_LeftView;
 	View m_RightView;
 
-	// Three views for the background
 	View m_BGMainView;
 	View m_BGLeftView;
 	View m_BGRightView;
 
 	View m_HudView;
 
-	// Declare a sprite and a Texture for the background
+	// Background (Sprite & Texture)
 	Sprite m_BackgroundSprite;
 	Texture m_BackgroundTexture;
-	// Declare a shader for the background
+
+	// Background Shader
 	Shader m_RippleShader;
 
-	// Is the game currently playing?
+	// Game Playing State
 	bool m_Playing = false;
 
-	// Is character 1 or 2 the current focus?
+	// Camera Focus (Character)
 	bool m_Character1 = true;
 
-	// Start in full screen mode
+	// Screen Mode (Single or Multiplayer)
 	bool m_SplitScreen = false;
 
-	// How much time is left in the current level
+	// Level Time Left
 	float m_TimeRemaining = 10;
 	Time m_GameTimeTotal;
 
-	// Is it time for a new/first level?
+	// New Level Startup
 	bool m_NewLevelRequired = true;
 
-	// The vertex array for the level design
+	// Level Design VertexArray
 	VertexArray m_VALevel;
 
-	// The 2d array with the map for the level
-	// A pointer to a pointer
+	// 2D Array Map (Pointer of Pointer)
 	int** m_ArrayLevel = NULL;
 
-	// Texture for the background and the level tiles
+	// Background & Level Tile Texture
 	Texture m_TextureTiles;
 	
-	// Private functions for internal use only
 	void input();
 	void update(float dtAsSeconds);
 	void draw();	
 
-	// Load a new level
+	// New Level Loaded
 	void loadLevel();
 
-	// Run will call all the private functions
 	bool detectCollisions(PlayableCharacter& character);
 	
-	// Make a vector of the best places to emit sounds from
-	void populateEmitters(vector <Vector2f>& vSoundEmitters,
-		int** arrayLevel);
+	// Directional Sound
+	void populateEmitters(vector <Vector2f>& vSoundEmitters, int** arrayLevel);
 
-	// A vector of Vector2f for the fire emiiter locations
+	// Fire Emitter Location
 	vector <Vector2f> m_FireEmitters;
 	
 public:
-	// The Engine constructor
+	// Constructor
 	Engine();
 
-	// Run will call all the private functions
 	void run();
-
 };

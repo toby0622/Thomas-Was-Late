@@ -4,10 +4,9 @@
 class Thomas : public PlayableCharacter
 {
 public:
-	// A constructor specific to Thomas
+	// Constructor
 	Thomas();
 
-	// The overriden input handler for Thomas
+	// Override Input Handler
 	bool virtual handleInput();
-
 };

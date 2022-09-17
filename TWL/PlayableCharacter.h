@@ -1,81 +1,73 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-
 using namespace sf;
 
 class PlayableCharacter
 {
 protected:
-	// Of course we will need a sprite
+	// Sprite
 	Sprite m_Sprite;
 
-	// How long does a jump last
+	// Jump Duration Time
 	float m_JumpDuration;
 
-	// Is character currently jumping or falling
+	// Character Operation (Jump of Fall)
 	bool m_IsJumping;
 	bool m_IsFalling;
 
-	// Which directions is the character currently moving in
+	// Currently Moving Direction
 	bool m_LeftPressed;
 	bool m_RightPressed;
 
-	// How long has this jump lasted so far
+	// Jump Time Passed
 	float m_TimeThisJump;
 
-	// Has the player just initialted a jump
+	// Jump Initialize
 	bool m_JustJumped = false;
 
-	// Private variables and functions come next
 private:
-	// What is the gravity
+	// Gravity
 	float m_Gravity;
 
-	// How fast is the character
+	// Character Movement Speed
 	float m_Speed = 400;
 
-	// Where is the player
+	// Character Position
 	Vector2f m_Position;
 
-	// Where are the characters various body parts?
+	// Body Parts
 	FloatRect m_Feet;
 	FloatRect m_Head;
 	FloatRect m_Right;
 	FloatRect m_Left;
 
-	// And a texture
 	Texture m_Texture;
 
-	// All our public functions will come next
 public:
-
 	void spawn(Vector2f startPosition, float gravity);
 
-	// This is a pure virtual function
+	// Pure Virtual Function (Abstract and couldn't be Instanciated)
 	bool virtual handleInput() = 0;
-	// This class is now abstract and cannot be instanciated
 
-	// Where is the player
+	// Player Position
 	FloatRect getPosition();
 
-	// A rectangle representing the position of different parts of the sprite
+	// Position of Different Part Sprites
 	FloatRect getFeet();
 	FloatRect getHead();
 	FloatRect getRight();
 	FloatRect getLeft();
 
-	// Send a copy of the sprite to main
 	Sprite getSprite();
 
-	// Make the character stand firm
+	// Stand Still
 	void stopFalling(float position);
 	void stopRight(float position);
 	void stopLeft(float position);
 	void stopJump();
 
-	// Where is the center of the character
+	// Character Center
 	Vector2f getCenter();
 
-	// We will call this function once every frame
 	void update(float elapsedTime);
 };

@@ -1,6 +1,5 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-
 using namespace sf;
 
 class Particle
@@ -13,7 +12,6 @@ public:
 	Particle(Vector2f direction);
 
 	void update(float dt);
-
 	void setPosition(Vector2f position);
 
 	Vector2f getPosition();

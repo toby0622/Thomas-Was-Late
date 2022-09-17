@@ -4,11 +4,10 @@
 class Bob : public PlayableCharacter
 {
 public:
-	// A constructor specific to Bob
+	// Constructor
 	Bob();
 
-	// The overriden input handler for Bob
+	// Override Input Handler
 	bool virtual handleInput();
-
 };
 
